@@ -24,6 +24,14 @@ jobs:
           NEXT_TELEMETRY_DISABLED: '1'
           NEXT_PUBLIC_BASE_PATH: /arhetip-style
           NEXT_PUBLIC_SITE_URL: https://f1roez.github.io/arhetip-style
+      - name: Build Hair City website
+        run: node node_modules/next/dist/bin/next build sites/hair-city --webpack
+        env:
+          NEXT_TELEMETRY_DISABLED: '1'
+          NEXT_PUBLIC_BASE_PATH: /arhetip-style/hair-city
+          NEXT_PUBLIC_SITE_URL: https://f1roez.github.io/arhetip-style/hair-city
+      - name: Add Hair City to published pages
+        run: cp -R sites/hair-city/out out/hair-city
       - uses: actions/upload-pages-artifact@v3
         with:
           path: out
